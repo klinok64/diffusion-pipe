@@ -842,7 +842,7 @@ class DatasetManager:
             for i, submodel in enumerate(self.submodels):
                 if i != id:
                     submodel.to('cpu')
-            self.submodels[id].to('cuda')
+            self.submodels[id].to_empty(device='cuda')
         if id == 0:
             tensor, pipe = task[1:]
             results = self.call_vae_fn(tensor)
